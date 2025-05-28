@@ -15,6 +15,7 @@ This Rust application receives mock PumpFun messages, aggregates them into K-lin
 - Instead of using JSON, employ a binary data format similar to Protobuf. JSON serialization/deserialization is extremely resource-intensive. As is well known, Solana does not use JSON and instead uses binary-formatted data.
 - We can use io_uring to optimize network I/O performance, but I don't think this is a top priority.
 - Reduce the use of unwrap() and improve error handling.
+- Since web page refreshes are intended for human viewing and don't need to happen many times per second, it's sufficient to push the latest K-line data to the web client once every second.  So that a separate Kafka consumer is no longer assigned to each WebSocket client.
 
 
 ## Architecture
